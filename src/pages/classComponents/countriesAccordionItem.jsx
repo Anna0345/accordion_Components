@@ -21,14 +21,15 @@ class AccordionItem extends Component {
 
   render() {
     const { country, capital } = this.props;
+    const { isOpen} = this.state
 
     return (
       <div className="countries-item">
         <div className="accordionOfCountries" onClick={this.handleClick}>
           {country}
-          {this.state.isOpen ? <FaChevronUp /> : <FaChevronDown />}
+          {isOpen ? <FaChevronUp /> : <FaChevronDown />}
         </div>
-        {this.state.isOpen && (
+        {isOpen && (
           <div className="accordion-content">{capital}</div>
         )}
       </div>

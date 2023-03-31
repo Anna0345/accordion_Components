@@ -9,12 +9,13 @@ function Accordion() {
       .then(response => response.json())
       .then(res => {
         const countries = res.data
-          .filter(country => country.capital !== '') // Filter out countries with empty capital
-          .slice(0, 40)
+          .filter(name => name.capital !== '') // Filter out countries with empty capital
+          .slice(0, 40) 
+          .sort(() => Math.random() - 0.5)// this is  the Fisher-Yates shuffle
         setCountries(countries);
       })
       .catch(error => {
-        console.error('Error fetching data: ', error);
+        console.error( error);
       });
   }, []);
 

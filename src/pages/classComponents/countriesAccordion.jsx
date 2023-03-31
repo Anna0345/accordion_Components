@@ -17,7 +17,7 @@ class Accordion extends Component {
         const countries = res.data
         .filter((country) => country.capital !== "") 
         const shuffledCountries = countries.sort(() => Math.random() - 0.5);
-        const randomCountries = shuffledCountries.slice(0, 15);
+        const randomCountries = shuffledCountries.slice(0, 15); // picks up 15 random values from the whole data
         this.setState({
           countries: randomCountries
         });
@@ -28,13 +28,11 @@ class Accordion extends Component {
   }
 
   render() {
-    const { countries } = this.state;
-
   
 
     return (
       <div className="accordion">
-        {countries.map((country) => (
+        {this.state.countries.map((country) => (
           <Countries
             key={country.name}
             country={country.name}
